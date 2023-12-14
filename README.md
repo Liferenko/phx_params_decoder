@@ -1,6 +1,6 @@
 # PhxParamsDecoder
-
-**TODO: Add description**
+LiveView params stringified every value. URI.decode_query does not help here. 
+Let's decode them
 
 ## Installation
 
