@@ -5,7 +5,7 @@ defmodule PhxParamsDecoder.MixProject do
     [
       app: :phx_params_decoder,
       description: "Library to decode Phoenix params (especially stringified integers))",
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
       preferred_cli_env: [

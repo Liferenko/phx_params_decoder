@@ -17,6 +17,9 @@ defmodule PhxParamsDecoder do
       iex> PhxParamsDecoder.decode(%{"string" => ["Totally", "valid", "string"]})
       %{string: ["Totally", "valid", "string"]}
 
+      iex> PhxParamsDecoder.decode(%{"string" => ["Totally", "valid", "string"]})
+      %{string: ["Totally", "valid", "string"]}
+
   """
   @spec decode(map) :: map
   def decode(params) do
@@ -27,17 +30,17 @@ defmodule PhxParamsDecoder do
     |> Map.new()
   end
 
-  #TODO add float support
-  #TODO add boolean support
-  #TODO add date support
-  #TODO add datetime support
-  #TODO add time support
-  #TODO add list support
-  #TODO add map support
-  #TODO add struct support
-  #TODO add tuple support
-  #TODO add nested map support
-  #
+  #TODO
+  #- [ ] add boolean support
+  #- [ ] add date support
+  #- [ ] add datetime support
+  #- [ ] add time support
+  #- [ ] add list support
+  #- [ ] add map support
+  #- [ ] add struct support
+  #- [ ] add tuple support
+  #- [ ] add nested map support
+  #- [ ] add nested list support
   def decode_value(values) when is_list(values) do
     Enum.map(values, &decode_value/1)
   end
