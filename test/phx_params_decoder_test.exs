@@ -21,6 +21,12 @@ defmodule PhxParamsDecoderTest do
       assert PhxParamsDecoder.decode_value(value) == 12
     end
 
+    test "decodes a value which is a stringified float" do
+      value = "12.2"
+
+      assert PhxParamsDecoder.decode_value(value) == 12.2
+    end
+
     test "decodes a value which is a float" do
       value = 12.2
 

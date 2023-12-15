@@ -11,6 +11,12 @@ defmodule PhxParamsDecoder do
       iex> PhxParamsDecoder.decode(%{"page" => "1"})
       %{page: 1}
 
+      iex> PhxParamsDecoder.decode(%{"pages" => ["1", "99", "122"]})
+      %{pages: [1, 99, 122]}
+
+      iex> PhxParamsDecoder.decode(%{"string" => ["Totally", "valid", "string"]})
+      %{string: ["Totally", "valid", "string"]}
+
   """
   @spec decode(map) :: map
   def decode(params) do
@@ -42,6 +48,10 @@ defmodule PhxParamsDecoder do
   def decode_value(value) when is_binary(value) do
     case Integer.parse(value) do
       {int, ""} -> int
+      {int, dot} -> case Float.parse(value) do # OPTIMIZE looks ugly with case within the case. 
+        {float, ""} -> float
+        _ -> value
+      end
       _ -> value
     end
   end
